@@ -17,19 +17,15 @@
 
 <body class="font-sans bg-gray-100 flex">
 
-    <!-- Menu Lateral -->
     <nav class="bg-gray-800 text-white p-4 w-64">
 
-        <!-- Logo e Nome do Site -->
         <div class="flex items-center mb-6">
             <img src="Images/dothcom_logo.jpg" alt="Logo" class="w-10 h-10 mr-2 rounded-lg">
             <span class="text-xl font-semibold">Meu Site</span>
         </div>
 
-        <!-- Itens do Menu -->
         <ul class="space-y-2">
 
-            <!-- Item 1 -->
             <li>
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                     <span class="mr-2"><i class="fas fa-home"></i></span>
@@ -37,7 +33,6 @@
                 </a>
             </li>
 
-            <!-- Item 2 com Subitens -->
             <li class="group">
                 <a href="#"
                     class="flex items-center py-2 px-4 text-gray-300 group-hover:bg-gray-700 group-hover:text-white">
@@ -51,7 +46,6 @@
                 </ul>
             </li>
 
-            <!-- Item 3 -->
             <li>
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                     <span class="material-symbols-outlined">
@@ -61,10 +55,8 @@
                 </a>
             </li>
 
-            <!-- Divider -->
             <li class="border-t border-gray-700 my-2"></li>
 
-            <!-- Item 4 - Exemplo de Link com Ícone -->
             <li>
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                     <span class="material-symbols-outlined">
@@ -76,29 +68,33 @@
 
         </ul>
 
-        <!-- Rodapé do Menu Lateral -->
         <div class="mt-auto border-t border-gray-700 pt-4">
             <p class="text-gray-400">&copy; 2024 Meu Site DothCom</p>
         </div>
 
     </nav>
 
-    <!-- Conteúdo Principal -->
     <div class="flex-1 p-8">
 
-        <!-- Menu Superior -->
         <header class="bg-blue-500 text-white p-4 rounded-lg">
 
-            <!-- Barra de Navegação -->
             <div class="container mx-auto flex justify-between items-center">
 
-                <!-- Logo do Menu Superior -->
                 <div>
                     <h1>Principais Notícias</h1>
                 </div>
 
-                <!-- Itens da Barra de Navegação -->
-                <nav class="space-x-4">
+                <div class="block lg:hidden">
+                    <button id="menu-toggle"
+                        class="flex items-center px-3 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white ml-3">
+                        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <title>Menu</title>
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <nav class="hidden lg:flex items-center space-x-4">
                     <a href="#" class="hover:text-gray-300">Reportar</a>
                     <a href="#" class="hover:text-gray-300">Sobre</a>
                     <a href="#" class="hover:text-gray-300">Contato</a>
@@ -106,12 +102,19 @@
 
             </div>
 
+            <div id="menu" class="hidden lg:hidden">
+                <ul class="mt-4 space-y-4">
+                    <li><a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-700">Reportar</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-700">Sobre</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-700">Contato</a></li>
+                </ul>
+            </div>
+
         </header>
 
-        <!-- Conteúdo de Notícias -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4">
 
-            <!-- Notícia 1 -->
+            <!-- Noticia 1 -->
             <div class="bg-gray-200 p-6 rounded-lg shadow-md">
                 <div class="aspect-w-16 aspect-h-9 mb-4">
                     <img src="Images/pexels-junior-teixeira-2047905 (1).jpg" alt="Imagem Notícia 1"
@@ -123,7 +126,7 @@
                 <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
             </div>
 
-            <!-- Notícia 2 -->
+            <!-- Noticia 2 -->
             <div class="bg-gray-200 p-6 rounded-lg shadow-md">
                 <div class="aspect-w-16 aspect-h-9 mb-4">
                     <img src="Images/pexels-negative-space-160107.jpg" alt="Imagem Notícia 2"
@@ -135,7 +138,7 @@
                 <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
             </div>
 
-            <!-- Notícia 3 -->
+            <!-- Noticia 3 -->
             <div class="bg-gray-200 p-6 rounded-lg shadow-md">
                 <div class="aspect-w-16 aspect-h-9 mb-4">
                     <img src="Images/pexels-lee-campbell-89724.jpg" alt="Imagem Notícia 3"
@@ -147,7 +150,7 @@
                 <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
             </div>
 
-            <!-- Notícia 4 -->
+            <!-- Noticia 4 -->
             <div class="bg-gray-200 p-6 rounded-lg shadow-md">
                 <div class="aspect-w-16 aspect-h-9 mb-4">
                     <img src="Images/pexels-tranmautritam-326511.jpg" alt="Imagem Notícia 4"
@@ -159,7 +162,7 @@
                 <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
             </div>
 
-            <!-- Notícia 5 -->
+            <!-- Noticia 5 -->
             <div class="bg-gray-200 p-6 rounded-lg shadow-md">
                 <div class="aspect-w-16 aspect-h-9 mb-4">
                     <img src="Images/pexels-mikhail-fesenko-9553905.jpg" alt="Imagem Notícia 5"
@@ -171,6 +174,7 @@
                 <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
             </div>
 
+            <!-- Noticia 6 -->
             <div class="bg-gray-200 p-6 rounded-lg shadow-md">
                 <div class="aspect-w-16 aspect-h-9 mb-4">
                     <img src="Images/pexels-thisisengineering-3862142.jpg" alt="Imagem Notícia 5"
@@ -185,6 +189,16 @@
         </div>
 
     </div>
+
+    <script>
+        // JavaScript para alternar a visibilidade do menu hamburguer
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 
 </body>
 
