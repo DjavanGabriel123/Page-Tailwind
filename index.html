@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Tailwind CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Adicione o pacote de ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-DlbwzigvMEK3e5ZeMf3Ottz2XuWi0ZKxjioptIw1Vj9eD4Jmvw3ASsX1A+FuG8H/bz2ZpBpqCWpJOGp+StudMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" href="Images/7577995.webp">
+</head>
+
+<body class="font-sans bg-gray-100 flex">
+
+    <!-- Menu Lateral -->
+    <nav class="bg-gray-800 text-white p-4 w-64">
+
+        <!-- Logo e Nome do Site -->
+        <div class="flex items-center mb-6">
+            <img src="Images/dothcom_logo.jpg" alt="Logo" class="w-10 h-10 mr-2 rounded-lg">
+            <span class="text-xl font-semibold">Meu Site</span>
+        </div>
+
+        <!-- Itens do Menu -->
+        <ul class="space-y-2">
+
+            <!-- Item 1 -->
+            <li>
+                <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                    <span class="mr-2"><i class="fas fa-home"></i></span>
+                    Página Inicial
+                </a>
+            </li>
+
+            <!-- Item 2 com Subitens -->
+            <li class="group">
+                <a href="#"
+                    class="flex items-center py-2 px-4 text-gray-300 group-hover:bg-gray-700 group-hover:text-white">
+                    <span class="mr-2"><i class="fas fa-newspaper"></i></span>
+                    Notícias
+                </a>
+                <ul class="pl-4 space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Notícia 1</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Notícia 2</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Notícia 3</a></li>
+                </ul>
+            </li>
+
+            <!-- Item 3 -->
+            <li>
+                <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                    <span class="material-symbols-outlined">
+                        info
+                    </span>
+                    <span class="ml-2"><i class="fas fa-address-card"></i>Informações</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <li class="border-t border-gray-700 my-2"></li>
+
+            <!-- Item 4 - Exemplo de Link com Ícone -->
+            <li>
+                <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                    <span class="material-symbols-outlined">
+                        manage_accounts
+                    </span>
+                    <span class="ml-2"><i class="fas fa-link"></i>Sua conta</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- Rodapé do Menu Lateral -->
+        <div class="mt-auto border-t border-gray-700 pt-4">
+            <p class="text-gray-400">&copy; 2024 Meu Site DothCom</p>
+        </div>
+
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="flex-1 p-8">
+
+        <!-- Menu Superior -->
+        <header class="bg-blue-500 text-white p-4 rounded-lg">
+
+            <!-- Barra de Navegação -->
+            <div class="container mx-auto flex justify-between items-center">
+
+                <!-- Logo do Menu Superior -->
+                <div>
+                    <h1>Principais Notícias</h1>
+                </div>
+
+                <!-- Itens da Barra de Navegação -->
+                <nav class="space-x-4">
+                    <a href="#" class="hover:text-gray-300">Reportar</a>
+                    <a href="#" class="hover:text-gray-300">Sobre</a>
+                    <a href="#" class="hover:text-gray-300">Contato</a>
+                </nav>
+
+            </div>
+
+        </header>
+
+        <!-- Conteúdo de Notícias -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4">
+
+            <!-- Notícia 1 -->
+            <div class="bg-gray-200 p-6 rounded-lg shadow-md">
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <img src="Images/pexels-junior-teixeira-2047905 (1).jpg" alt="Imagem Notícia 1"
+                        class="object-cover rounded-md w-full h-full" onerror="this.src='placeholder.jpg'" />
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Título da Notícia 1</h3>
+                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
+            </div>
+
+            <!-- Notícia 2 -->
+            <div class="bg-gray-200 p-6 rounded-lg shadow-md">
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <img src="Images/pexels-negative-space-160107.jpg" alt="Imagem Notícia 2"
+                        class="object-cover rounded-md w-full h-full" onerror="this.src='placeholder.jpg'" />
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Título da Notícia 2</h3>
+                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
+            </div>
+
+            <!-- Notícia 3 -->
+            <div class="bg-gray-200 p-6 rounded-lg shadow-md">
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <img src="Images/pexels-lee-campbell-89724.jpg" alt="Imagem Notícia 3"
+                        class="object-cover rounded-md w-full h-full" onerror="this.src='placeholder.jpg'" />
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Título da Notícia 3</h3>
+                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
+            </div>
+
+            <!-- Notícia 4 -->
+            <div class="bg-gray-200 p-6 rounded-lg shadow-md">
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <img src="Images/pexels-tranmautritam-326511.jpg" alt="Imagem Notícia 4"
+                        class="object-cover rounded-md w-full h-full" onerror="this.src='placeholder.jpg'" />
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Título da Notícia 4</h3>
+                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
+            </div>
+
+            <!-- Notícia 5 -->
+            <div class="bg-gray-200 p-6 rounded-lg shadow-md">
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <img src="Images/pexels-mikhail-fesenko-9553905.jpg" alt="Imagem Notícia 5"
+                        class="object-cover rounded-md w-full h-full" onerror="this.src='placeholder.jpg'" />
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Título da Notícia 5</h3>
+                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
+            </div>
+
+            <div class="bg-gray-200 p-6 rounded-lg shadow-md">
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <img src="Images/pexels-thisisengineering-3862142.jpg" alt="Imagem Notícia 5"
+                        class="object-cover rounded-md w-full h-full" onerror="this.src='placeholder.jpg'" />
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Título da Notícia 6</h3>
+                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="text-blue-500 mt-4 inline-block">Leia mais</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
