@@ -26,6 +26,10 @@
 /* Estilos aqui */
 .menu-lateral {
     height: auto;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 }
 
 .popup-image {
@@ -126,4 +130,11 @@
     font-weight: bold;
     color: yellow;
     /* Cor destacada de sua escolha */
+}
+
+.busca-menu{
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 }

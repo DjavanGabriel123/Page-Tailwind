@@ -415,6 +415,3 @@ const searchInput = document.getElementById('search-input');
 searchInput.addEventListener('input', function () {
     filtrarImagensNaGaleria(this.value);
 });
-
-
-
