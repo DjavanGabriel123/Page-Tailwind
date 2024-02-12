@@ -1,0 +1,129 @@
+/* Estilos para o formulário de editar imagem */
+#edit-image-form {
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #333;
+}
+
+#edit-image-form label {
+    font-weight: bold;
+}
+
+#edit-image-form input[type="text"],
+#edit-image-form textarea {
+    width: calc(100% - 16px);
+    margin-bottom: 10px;
+}
+
+#edit-image-form .button-container {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Estilos aqui */
+.menu-lateral {
+    height: auto;
+}
+
+.popup-image {
+    width: 100%;
+    height: auto;
+    max-height: calc(80vh - 100px);
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.popup-content {
+    width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #333;
+    display: flex;
+}
+
+.popup-content>div:first-child {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.popup-image {
+    width: 100%;
+    height: auto;
+    max-height: calc(80vh - 100px);
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Estilos para o botão de fechar */
+#close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    background-color: #e53e3e;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilos para o contêiner de botões */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Estilos para os botões */
+.popup-button {
+    padding: 8px 16px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos para o botão de fechar */
+#close-form {
+    background-color: #e53e3e;
+    color: white;
+}
+
+/* Estilos para o botão de salvar */
+#save-image {
+    background-color: #38a169;
+    color: white;
+}
+
+/* Estilos para os botões quando hover */
+.popup-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para destacar o título correspondente no menu lateral */
+.menu-lateral .highlight {
+    font-weight: bold;
+    color: yellow;
+    /* Cor destacada de sua escolha */
+}
