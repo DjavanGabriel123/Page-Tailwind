@@ -366,6 +366,14 @@ function searchMenu() {
     // Obtém todos os itens da lista no menu lateral
     var menuItems = document.querySelectorAll('.menu-lateral a');
 
+    // Se o campo de pesquisa estiver vazio, remover destaque de todos os itens
+    if (searchText === '') {
+        menuItems.forEach(function (item) {
+            item.classList.remove('highlight');
+        });
+        return; // Sai da função, evitando a iteração desnecessária
+    }
+
     // Itera sobre cada item da lista no menu lateral
     menuItems.forEach(function (item) {
         // Obtém o título do item
@@ -384,3 +392,29 @@ function searchMenu() {
         }
     });
 }
+
+// Função para filtrar as imagens na galeria com base no título da pesquisa
+function filtrarImagensNaGaleria(query) {
+    const galeria = document.getElementById('gallery');
+    const imagens = galeria.querySelectorAll('.gallery-image');
+
+    imagens.forEach(function (imagem) {
+        const titulo = imagem.getAttribute('data-title').toLowerCase();
+        const container = imagem.parentNode;
+
+        if (titulo.includes(query.toLowerCase())) {
+            container.style.display = 'block'; // Exibir o contêiner da imagem
+        } else {
+            container.style.display = 'none'; // Ocultar o contêiner da imagem
+        }
+    });
+}
+
+// Adiciona um ouvinte de eventos de entrada ao campo de pesquisa
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', function () {
+    filtrarImagensNaGaleria(this.value);
+});
+
+
+
