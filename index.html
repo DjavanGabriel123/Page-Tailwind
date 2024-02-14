@@ -14,8 +14,8 @@
 
 <body class="font-sans bg-gray-100 flex flex-col min-h-screen">
     <!-- Navegação -->
-    <nav class="bg-gray-900 text-white p-4 flex justify-between items-center">
-        <div class="flex items-center">
+    <nav class="bg-gray-900 text-white p-4 flex justify-between items-center nav-mobile">
+        <div class="flex items-center menu-mobile">
             <button class="material-symbols-outlined hamburger">
                 menu
             </button>
@@ -156,9 +156,9 @@
             <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <!-- Imagem 1 -->
                 <div class="relative cursor-pointer">
-                    <img src="Images/pexels-junior-teixeira-2047905 (1).jpg" class="gallery-image popup-trigger popup-trigger-mobile"
-                        data-title="Título da Imagem 1" data-description="Descrição da Imagem 1" data-weight="1.2 MB"
-                        data-size="1600x1200 pixels">
+                    <img src="Images/pexels-junior-teixeira-2047905 (1).jpg"
+                        class="gallery-image popup-trigger popup-trigger-mobile" data-title="Título da Imagem 1"
+                        data-description="Descrição da Imagem 1" data-weight="1.2 MB" data-size="1600x1200 pixels">
                     <!-- Botão de exclusão -->
                     <button class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full"
                         onclick="confirmDelete(this)">Excluir</button>
@@ -222,7 +222,7 @@
                 onclick="closePopupOnClickOutside(event)">
                 <div class="popup-content flex p-8">
                     <!-- Lado esquerdo -->
-                    <div class="w-2/3 pr-8 border-r border-gray-400 relative">
+                    <div class="w-2/3 pr-8 border-r border-gray-400 relative pop-up-edit-mobile">
                         <button id="close-popup"
                             class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full"
                             onclick="closePopup()">Fechar</button>
@@ -249,6 +249,10 @@
                     <div class="w-7/12 pl-8 flex justify-center items-center overflow-hidden relative image-mobile">
                         <img src="" alt="Imagem" class="popup-image object-cover h-full" id="popup-image">
                         <!-- Adicionando a classe object-cover para ajustar a imagem ao contêiner -->
+
+                        <button id="close-popup-mobile"
+                             class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full"
+                            onclick="closePopup()">Fechar</button>
 
                         <!-- Botão de editar -->
                         <button id="edit-image"
