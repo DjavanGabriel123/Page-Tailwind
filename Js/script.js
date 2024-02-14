@@ -415,3 +415,41 @@ const searchInput = document.getElementById('search-input');
 searchInput.addEventListener('input', function () {
     filtrarImagensNaGaleria(this.value);
 });
+
+// Função para exibir/ocultar o menu lateral em dispositivos móveis
+function toggleMobileMenu() {
+    var menu = document.querySelector('.menu-lateral');
+    menu.classList.toggle('menu-lateral-visivel');
+}
+
+// Ocultar o menu lateral inicialmente
+document.addEventListener('DOMContentLoaded', function () {
+    var menu = document.querySelector('.menu-lateral');
+    menu.classList.add('menu-lateral-oculto');
+});
+
+// Adicionar evento de clique ao ícone do menu hamburger para mostrar/ocultar o menu lateral
+document.querySelector('.hamburger').addEventListener('click', function () {
+    toggleMobileMenu();
+});
+
+function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    var content = document.getElementById("content");
+
+    sidebar.classList.toggle("hidden");
+    if (sidebar.classList.contains("hidden")) {
+        content.classList.remove("md:pl-64", "lg:pl-80");
+    } else {
+        content.classList.add("md:pl-64", "lg:pl-80");
+    }
+}
+
+// Função para abrir e fechar o menu lateral ao clicar no botão hamburger
+const hamburgerButton = document.querySelector('.hamburger');
+const menuLateral = document.querySelector('.menu-lateral');
+
+hamburgerButton.addEventListener('click', () => {
+    menuLateral.classList.toggle('menu-lateral-aberto');
+});
+

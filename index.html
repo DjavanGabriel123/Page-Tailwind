@@ -15,8 +15,11 @@
 <body class="font-sans bg-gray-100 flex flex-col min-h-screen">
     <!-- Navegação -->
     <nav class="bg-gray-900 text-white p-4 flex justify-between items-center">
-        <div>
-            <a href="#" class="text-xl font-semibold">Meu Site</a>
+        <div class="flex items-center">
+            <button class="material-symbols-outlined hamburger">
+                menu
+            </button>
+            <a href="#" class="text-xl font-semibold ml-2">Galeria</a>
         </div>
         <!-- Campo de pesquisa -->
         <div class="w-1/3 mx-auto busca-menu">
@@ -34,7 +37,7 @@
     </nav>
 
     <!-- Layout Principal -->
-    <div class="flex flex-1">
+    <div id="content" class="flex flex-1">
 
         <!-- Menu Lateral -->
         <nav class="menu-lateral bg-gray-900 text-white w-64 flex flex-col">
@@ -111,7 +114,6 @@
             </div>
         </nav>
 
-        <!-- Conteúdo Principal -->
         <div class="flex-1 p-8">
             <h1 class="text-3xl font-semibold mb-8">Galeria de Fotos</h1>
 
@@ -214,8 +216,6 @@
                 </div>
             </div>
 
-
-            <!-- Pop-up de detalhes da imagem -->
             <div id="image-details-popup"
                 class="fixed top-0 left-0 z-50 w-full h-full bg-gray-900 bg-opacity-75 flex items-center justify-center hidden"
                 onclick="closePopupOnClickOutside(event)">
