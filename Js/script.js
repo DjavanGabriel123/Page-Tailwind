@@ -450,23 +450,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var menuLateral = document.querySelector('.menu-lateral');
     var hamburger = document.querySelector('.hamburger');
 
-    // Função para fechar o menu lateral quando clicar fora dele
-    document.addEventListener('click', function (event) {
-        // Verifica se o menu lateral está aberto e se o clique não foi dentro do menu lateral
-        if (menuLateral.classList.contains('menu-lateral-aberto') && !menuLateral.contains(event.target) && !event.target.classList.contains('hamburger')) {
-            // Fecha o menu lateral
-            menuLateral.classList.remove('menu-lateral-aberto');
-            // Atualiza o ícone do hamburger
-            hamburger.innerText = 'menu';
-        }
-    });
-
     // Função para alternar entre abrir e fechar o menu lateral quando o botão hamburger é clicado
     hamburger.addEventListener('click', function () {
         // Verifica se o menu lateral está aberto ou fechado e alterna o estado
         if (menuLateral.classList.contains('menu-lateral-aberto')) {
             // Fecha o menu lateral
-            menuLateral.classList.remove('menu-lzateral-aberto');
+            menuLateral.classList.remove('menu-lateral-aberto');
             // Atualiza o ícone do hamburger
             hamburger.innerText = 'menu';
         } else {
@@ -478,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// JavaScript
+
 function closePopup() {
     var popup = document.getElementById('image-details-popup');
     popup.classList.add('shrink'); // Adiciona a classe de animação
@@ -488,17 +477,46 @@ function closePopup() {
     }, 500); // Tempo da animação em milissegundos (0.5s)
 }
 
-// JavaScript
 function confirmDelete(button) {
     if (confirm("Tem certeza de que deseja excluir esta imagem?")) {
         var imageContainer = button.parentElement;
-        imageContainer.classList.add('slide-out-left'); // Adiciona a classe de animação
+        imageContainer.classList.add('fade-out'); // Adiciona a classe de animação
         setTimeout(function () {
             imageContainer.remove(); // Remove o elemento após a animação
         }, 500); // Tempo da animação em milissegundos (0.5s)
     }
 }
 
+// Adicione um novo seletor para dispositivos móveis
+document.querySelectorAll('.popup-trigger-mobile').forEach(item => {
+    item.addEventListener('click', event => {
+        // Exiba o pop-up de detalhes da imagem
+        openImagePopup(item);
+    });
+});
 
+// Função para fechar o menu lateral
+function closeSideMenu() {
+    var sideMenu = document.getElementById('menu-lateral');
+    sideMenu.classList.remove('menu-open');
+}
+
+// Adiciona um event listener para detectar cliques fora do menu lateral ou em elementos que o fecham
+document.addEventListener('click', function (event) {
+    var sideMenu = document.getElementById('menu-lateral');
+    var isClickInsideMenu = sideMenu.contains(event.target);
+    if (!isClickInsideMenu) {
+        closeSideMenu();
+    }
+});
+
+// Evento de clique para fechar o menu lateral quando clicar em "Adicionar Imagem"
+document.getElementById('open-form').addEventListener('click', closeSideMenu);
+
+// Evento de clique para fechar o menu lateral quando clicar em algum botão de exclusão de imagem na galeria
+var deleteButtons = document.querySelectorAll('.gallery-image button');
+deleteButtons.forEach(function (button) {
+    button.addEventListener('click', closeSideMenu);
+});
 
 

@@ -256,7 +256,6 @@
     animation: shrink 0.5s ease forwards;
 }
 
-/* CSS */
 /* Definição da animação de exclusão */
 @keyframes slideOutLeft {
     0% {
@@ -270,7 +269,18 @@
     }
 }
 
-/* Aplicando a animação de exclusão ao elemento */
-.slide-out-left {
-    animation: slideOutLeft 0.5s ease forwards;
+/* Definição da animação de desaparecimento */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Aplicando a animação de desaparecimento */
+.fade-out {
+    animation: fadeOut 0.5s ease;
 }
