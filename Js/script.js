@@ -445,11 +445,60 @@ function toggleSidebar() {
     }
 }
 
-// Função para abrir e fechar o menu lateral ao clicar no botão hamburger
-const hamburgerButton = document.querySelector('.hamburger');
-const menuLateral = document.querySelector('.menu-lateral');
+document.addEventListener('DOMContentLoaded', function () {
+    // Variáveis para o menu lateral e o botão hamburger
+    var menuLateral = document.querySelector('.menu-lateral');
+    var hamburger = document.querySelector('.hamburger');
 
-hamburgerButton.addEventListener('click', () => {
-    menuLateral.classList.toggle('menu-lateral-aberto');
+    // Função para fechar o menu lateral quando clicar fora dele
+    document.addEventListener('click', function (event) {
+        // Verifica se o menu lateral está aberto e se o clique não foi dentro do menu lateral
+        if (menuLateral.classList.contains('menu-lateral-aberto') && !menuLateral.contains(event.target) && !event.target.classList.contains('hamburger')) {
+            // Fecha o menu lateral
+            menuLateral.classList.remove('menu-lateral-aberto');
+            // Atualiza o ícone do hamburger
+            hamburger.innerText = 'menu';
+        }
+    });
+
+    // Função para alternar entre abrir e fechar o menu lateral quando o botão hamburger é clicado
+    hamburger.addEventListener('click', function () {
+        // Verifica se o menu lateral está aberto ou fechado e alterna o estado
+        if (menuLateral.classList.contains('menu-lateral-aberto')) {
+            // Fecha o menu lateral
+            menuLateral.classList.remove('menu-lzateral-aberto');
+            // Atualiza o ícone do hamburger
+            hamburger.innerText = 'menu';
+        } else {
+            // Abre o menu lateral
+            menuLateral.classList.add('menu-lateral-aberto');
+            // Atualiza o ícone do hamburger
+            hamburger.innerText = 'close';
+        }
+    });
 });
+
+// JavaScript
+function closePopup() {
+    var popup = document.getElementById('image-details-popup');
+    popup.classList.add('shrink'); // Adiciona a classe de animação
+    setTimeout(function () {
+        popup.classList.remove('shrink'); // Remove a classe após a animação
+        popup.classList.add('hidden'); // Oculta o pop-up
+    }, 500); // Tempo da animação em milissegundos (0.5s)
+}
+
+// JavaScript
+function confirmDelete(button) {
+    if (confirm("Tem certeza de que deseja excluir esta imagem?")) {
+        var imageContainer = button.parentElement;
+        imageContainer.classList.add('slide-out-left'); // Adiciona a classe de animação
+        setTimeout(function () {
+            imageContainer.remove(); // Remove o elemento após a animação
+        }, 500); // Tempo da animação em milissegundos (0.5s)
+    }
+}
+
+
+
 
