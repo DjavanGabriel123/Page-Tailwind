@@ -468,33 +468,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function closePopup() {
-    var popup = document.getElementById('image-details-popup');
-    popup.classList.add('shrink'); // Adiciona a classe de animação
-    setTimeout(function () {
-        popup.classList.remove('shrink'); // Remove a classe após a animação
-        popup.classList.add('hidden'); // Oculta o pop-up
-    }, 500); // Tempo da animação em milissegundos (0.5s)
-}
-
-function confirmDelete(button) {
-    if (confirm("Tem certeza de que deseja excluir esta imagem?")) {
-        var imageContainer = button.parentElement;
-        imageContainer.classList.add('fade-out'); // Adiciona a classe de animação
-        setTimeout(function () {
-            imageContainer.remove(); // Remove o elemento após a animação
-        }, 500); // Tempo da animação em milissegundos (0.5s)
-    }
-}
-
-// Adicione um novo seletor para dispositivos móveis
-document.querySelectorAll('.popup-trigger-mobile').forEach(item => {
-    item.addEventListener('click', event => {
-        // Exiba o pop-up de detalhes da imagem
-        openImagePopup(item);
-    });
-});
-
 function openMenu() {
     // Adicionar a classe 'open' ao menu lateral
     const menu = document.querySelector('.menu-lateral');
@@ -503,6 +476,16 @@ function openMenu() {
     // Remover a classe 'hidden' do submenu "Fotos"
     const subfolders = document.getElementById('subfolders');
     subfolders.classList.remove('hidden');
+}
+
+function closeMenu() {
+    // Remover a classe 'open' do menu lateral
+    const menu = document.querySelector('.menu-lateral');
+    menu.classList.remove('open');
+
+    // Adicionar a classe 'hidden' ao submenu "Fotos"
+    const subfolders = document.getElementById('subfolders');
+    subfolders.classList.add('hidden');
 }
 
 function searchMenu() {
@@ -520,18 +503,38 @@ function searchMenu() {
             openMenu();
         }
 
-        // Destacar os itens correspondentes no menu
-        const menuItems = document.querySelectorAll('.menu-lateral a');
-        menuItems.forEach(item => {
+        // Destacar os itens correspondentes apenas no submenu "Fotos"
+        const subfolderItems = document.querySelectorAll('#subfolders a');
+        subfolderItems.forEach(item => {
             const title = item.textContent.trim().toLowerCase();
-            if (title.includes(searchTerm)) {
+            if (title.startsWith(searchTerm)) {
                 item.classList.add('text-blue-500');
             } else {
                 item.classList.remove('text-blue-500');
             }
         });
+    } else {
+        // Se o campo de pesquisa estiver vazio, remover destaque dos itens do submenu "Fotos"
+        const subfolderItems = document.querySelectorAll('#subfolders a');
+        subfolderItems.forEach(item => {
+            item.classList.remove('text-blue-500');
+        });
     }
 }
+
+function openAddImageForm() {
+    // Abrir o formulário de adicionar imagem
+    const form = document.getElementById('image-form');
+    form.classList.remove('hidden');
+
+    // Fechar o menu lateral
+    closeMenu();
+}
+
+function simulateMenuClick() {
+    document.querySelector('.hamburger').click();
+}
+
 
 
 
