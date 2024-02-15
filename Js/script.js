@@ -495,4 +495,43 @@ document.querySelectorAll('.popup-trigger-mobile').forEach(item => {
     });
 });
 
+function openMenu() {
+    // Adicionar a classe 'open' ao menu lateral
+    const menu = document.querySelector('.menu-lateral');
+    menu.classList.add('open');
+
+    // Remover a classe 'hidden' do submenu "Fotos"
+    const subfolders = document.getElementById('subfolders');
+    subfolders.classList.remove('hidden');
+}
+
+function searchMenu() {
+    // Obter o valor do campo de pesquisa
+    const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
+
+    // Verificar se o campo de pesquisa está preenchido
+    if (searchTerm !== '') {
+        // Verificar se o menu lateral já está aberto
+        const menu = document.querySelector('.menu-lateral');
+        if (!menu.classList.contains('open')) {
+            // Simular um clique no botão do menu apenas se o menu não estiver aberto
+            document.querySelector('.hamburger').click();
+            // Abrir o menu lateral e o submenu "Fotos"
+            openMenu();
+        }
+
+        // Destacar os itens correspondentes no menu
+        const menuItems = document.querySelectorAll('.menu-lateral a');
+        menuItems.forEach(item => {
+            const title = item.textContent.trim().toLowerCase();
+            if (title.includes(searchTerm)) {
+                item.classList.add('text-blue-500');
+            } else {
+                item.classList.remove('text-blue-500');
+            }
+        });
+    }
+}
+
+
 

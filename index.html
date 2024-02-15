@@ -98,14 +98,13 @@
                     </li>
                     <li>
                         <!-- Botão para abrir o formulário de adicionar imagem -->
-                        <button id="open-form"
+                        <button id="open-form" onclick="openForm()"
                             class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700 focus:outline-none w-full">
                             <span class="mr-2"><i class="fas fa-plus-circle"></i></span>
-                            <span class="material-symbols-outlined mr-1">
-                                add
-                            </span>
+                            <span class="material-symbols-outlined mr-1">add</span>
                             Adicionar Imagem
                         </button>
+
                     </li>
                 </ul>
             </div>
@@ -117,7 +116,7 @@
         <div class="flex-1 p-8">
             <h1 class="text-3xl font-semibold mb-8">Galeria de Fotos</h1>
 
-<!-- Formulário de adicionar imagem -->
+            <!-- Formulário de adicionar imagem -->
             <form id="image-form" class="max-w-lg bg-white rounded-lg shadow-md p-6 mb-8 hidden relative"
                 onsubmit="return validateForm()">
                 <h2 class="text-xl font-semibold mb-4">Adicionar Imagem</h2>
@@ -257,7 +256,8 @@
                             <button id="close-popup"
                                 class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full"
                                 onclick="closePopup()">Fechar</button>
-                            <h2 class="text-2xl font-bold mb-3.5 mt-3.5 text-black-300" id="popup-title">Título da Imagem:</h2>
+                            <h2 class="text-2xl font-bold mb-3.5 mt-3.5 text-black-300" id="popup-title">Título da
+                                Imagem:</h2>
                             <div class="mb-5">
                                 <p class="text-gray-900 font-bold mb-1">Descrição:</p>
                                 <p class="text-gray-600" id="popup-description">Lorem ipsum dolor sit amet, consectetur
