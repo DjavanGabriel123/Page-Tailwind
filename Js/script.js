@@ -494,29 +494,31 @@ document.querySelectorAll('.popup-trigger-mobile').forEach(item => {
         openImagePopup(item);
     });
 });
+// Função para abrir o menu "Fotos" e alternar entre as classes de animação do hamburger
+function openPhotosMenu() {
+    var photosMenu = document.querySelector('#subfolders');
+    photosMenu.classList.toggle('aberto'); // Adiciona ou remove a classe "aberto"
 
-// Função para fechar o menu lateral
-function closeSideMenu() {
-    var sideMenu = document.getElementById('menu-lateral');
-    sideMenu.classList.remove('menu-open');
+    // Alternar entre as classes do hamburger
+    var hamburger = document.querySelector('.hamburger--arrowalt');
+    hamburger.classList.toggle('is-active'); // Adiciona ou remove a classe "is-active"
 }
 
-// Adiciona um event listener para detectar cliques fora do menu lateral ou em elementos que o fecham
-document.addEventListener('click', function (event) {
-    var sideMenu = document.getElementById('menu-lateral');
-    var isClickInsideMenu = sideMenu.contains(event.target);
-    if (!isClickInsideMenu) {
-        closeSideMenu();
-    }
-});
+// Evento de clique para abrir o menu "Fotos" e alternar as classes do hamburger
+document.getElementById('open-photos-menu').addEventListener('click', openPhotosMenu);
 
-// Evento de clique para fechar o menu lateral quando clicar em "Adicionar Imagem"
-document.getElementById('open-form').addEventListener('click', closeSideMenu);
+// Função para fechar o popup e alternar entre as classes de animação do hamburger
+function closePopup() {
+    var popup = document.getElementById('image-details-popup');
+    popup.classList.add('hidden'); // Adiciona a classe "hidden" para esconder o popup
 
-// Evento de clique para fechar o menu lateral quando clicar em algum botão de exclusão de imagem na galeria
-var deleteButtons = document.querySelectorAll('.gallery-image button');
-deleteButtons.forEach(function (button) {
-    button.addEventListener('click', closeSideMenu);
-});
+    // Alternar entre as classes do hamburger
+    var closeButton = document.getElementById('close-popup');
+    closeButton.classList.remove('is-active'); // Remove a classe "is-active"
+}
+
+// Evento de clique para fechar o popup e alternar as classes do hamburger
+document.getElementById('close-popup').addEventListener('click', closePopup);
+
 
 
