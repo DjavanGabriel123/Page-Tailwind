@@ -21,14 +21,23 @@
             </button>
             <a href="#" class="text-xl font-semibold ml-2">Galeria</a>
         </div>
-        <!-- Campo de pesquisa -->
+
         <div class="w-1/3 mx-auto busca-menu">
             <input type="text" id="search-input" oninput="searchMenu()"
                 class="w-full border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-400"
                 placeholder="Pesquisar por título" style="color: black;">
         </div>
+        <!-- Campo de pesquisa Mobile -->
+        <div class="w-1/3 mx-auto busca-menu-mobile">
+            <span id="lupa-mobile" onclick="openInputsearch();" class="material-symbols-outlined">
+                search
+            </span>
+            <input type="text" id="search-input" oninput="searchMenu()"
+                class="w-full border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+                placeholder="Pesquisar por título" style="color: black;">
+        </div>
 
-        <div>
+        <div class="menu-superior-mobile">
             <a href="#" class="mr-4">Home</a>
             <a href="#" class="mr-4">Sobre</a>
             <a href="#" class="mr-4">Contato</a>

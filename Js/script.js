@@ -478,3 +478,8 @@ function openAddImageForm() {
 function simulateMenuClick() {
     document.querySelector('.hamburger').click();
 }
+
+function openInputsearch() {
+    const searchInput = document.getElementById('search-input');
+    searchInput.classList.add('open-input');
+}
