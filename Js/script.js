@@ -28,38 +28,15 @@ document.addEventListener('DOMContentLoaded', function () {
         image.addEventListener('click', function () {
             const title = image.getAttribute('data-title');
             const description = image.getAttribute('data-description');
-            const weight = image.getAttribute('data-weight'); // Obter o peso da imagem
+            const weight = image.getAttribute('data-weight');
             const size = image.getAttribute('data-size');
 
             showImageDetails(title, description, weight, size);
         });
     });
-
-    const subFolders = document.getElementById('subfolders');
-    galleryImages.forEach(function (image) {
-        const title = image.getAttribute('data-title');
-        const description = image.getAttribute('data-description');
-
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
-<a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
-    <span class="mr-2"><i class="fas fa-image"></i></span>
-    ${title}
-</a>
-`;
-
-        subFolders.appendChild(listItem);
-    });
 });
 
-// Função para limpar os campos do formulário de adicionar imagem
-function clearImageForm() {
-    document.getElementById('title').value = '';
-    document.getElementById('description').value = '';
-    document.getElementById('image').value = '';
-}
-
-// Função para abrir o pop-up de detalhes da imagem
+// Função para mostrar detalhes da imagem no pop-up
 function showImageDetails(title, description, weight, size) {
     const popupTitle = document.getElementById('popup-title');
     const popupDescription = document.getElementById('popup-description');
@@ -69,7 +46,7 @@ function showImageDetails(title, description, weight, size) {
 
     popupTitle.textContent = title;
     popupDescription.textContent = description;
-    popupWeight.textContent = weight; // Exibir o peso da imagem
+    popupWeight.textContent = weight; // Definir o texto com o peso da imagem
     popupSize.textContent = size;
 
     const popup = document.getElementById('image-details-popup');
@@ -77,39 +54,6 @@ function showImageDetails(title, description, weight, size) {
     popup.classList.remove('hidden');
 }
 
-document.getElementById('gallery').addEventListener('click', function (event) {
-    if (event.target.classList.contains('gallery-image')) {
-        const title = event.target.getAttribute('data-title');
-        const description = event.target.getAttribute('data-description');
-        const weight = event.target.getAttribute('data-weight');
-        const size = event.target.getAttribute('data-size');
-
-        showImageDetails(title, description, weight, size);
-    }
-});
-
-
-// Função para limpar os campos do formulário de adicionar imagem
-function clearImageForm() {
-    document.getElementById('title').value = '';
-    document.getElementById('description').value = '';
-    document.getElementById('image').value = '';
-}
-
-
-// Função para fechar o popup de detalhes da imagem
-function closePopup() {
-    const popup = document.getElementById('image-details-popup');
-    popup.classList.add('hidden');
-}
-
-// Função para fechar o popup ao clicar fora dele
-function closePopupOnClickOutside(event) {
-    const popupContent = document.querySelector('.popup-content');
-    if (!popupContent.contains(event.target)) {
-        closePopup();
-    }
-}
 
 // Função para abrir o formulário de editar imagem
 function openEditForm() {
@@ -203,11 +147,8 @@ function showImageDetails(title, description, weight, size) {
 
     const popup = document.getElementById('image-details-popup');
     popupImage.src = event.target.src;
-
-    // Aqui vamos adicionar uma linha para exibir o peso da imagem
     popup.classList.remove('hidden');
 }
-
 document.getElementById('gallery').addEventListener('click', function (event) {
     if (event.target.classList.contains('gallery-image')) {
         const title = event.target.getAttribute('data-title');
