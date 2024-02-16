@@ -69,7 +69,7 @@
                             Galeria de Imagens
                         </a>
                     </li>
-                    <!-- Item de Configurações -->
+
                     <li>
                         <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                             <span class="mr-2"><i class="fas fa-cog"></i></span>
@@ -141,14 +141,16 @@
                 <!-- Contêiner para botões -->
                 <div class="button-container">
                     <button type="button" id="save-image"
-                        class="popup-button bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600">Salvar</button>
+                        class="popup-button bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
+                        onclick="saveImage()">Salvar</button>
                     <!-- Botão de fechar o formulário de adicionar imagem -->
                     <button type="button" id="close-form"
                         class="popup-button bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
                         onclick="closeAddImageForm()">Fechar</button>
-
                 </div>
             </form>
+
+
 
             <!-- Galeria de imagens -->
             <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -224,6 +226,8 @@
                         <button id="close-popup"
                             class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full"
                             onclick="closePopup()">Fechar</button>
+
+
                         <h2 class="text-2xl font-bold mb-10 text-black-300" id="popup-title">Título da Imagem</h2>
                         <div class="mb-10">
                             <p class="text-gray-900 font-bold mb-1">Descrição:</p>
@@ -231,11 +235,11 @@
                                 adipiscing elit. Nulla facilisi.</p>
                         </div>
                         <div class="mb-10">
-                            <p class="text-gray-900 font-bold mb-1">Peso:</p>
+                            <p>Peso: <span id="image-weight"></span></p>
                             <p class="text-gray-600" id="popup-weight">1.5 MB</p>
                         </div>
                         <div class="mb-10">
-                            <p class="text-gray-900 font-bold mb-1">Tamanho:</p>
+                            <p>Tamanho: <span id="image-size"></span></p>
                             <p class="text-gray-600" id="popup-size">1920x1080 pixels</p>
                         </div>
                         <div>
@@ -247,7 +251,7 @@
 
 
                     <div class="w-7/12 pl-3 justify-center items-center overflow-hidden relative image-mobile">
-                        <img src="" alt="Imagem" class="popup-image object-cover h-full" id="popup-image">
+                        <img src="" alt="Imagem" class="popup-image object-contain rounded-3xl h-full" id="popup-image">
                         <!-- Adicionando a classe object-cover para ajustar a imagem ao contêiner -->
 
                         <!--POP-UP-IMAGE-MOBILE-->

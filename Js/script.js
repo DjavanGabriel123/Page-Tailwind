@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     const openFormButton = document.getElementById('open-form');
     const imageForm = document.getElementById('image-form');
@@ -29,11 +28,27 @@ document.addEventListener('DOMContentLoaded', function () {
         image.addEventListener('click', function () {
             const title = image.getAttribute('data-title');
             const description = image.getAttribute('data-description');
-            const weight = image.getAttribute('data-weight');
+            const weight = image.getAttribute('data-weight'); // Obter o peso da imagem
             const size = image.getAttribute('data-size');
 
             showImageDetails(title, description, weight, size);
         });
+    });
+
+    const subFolders = document.getElementById('subfolders');
+    galleryImages.forEach(function (image) {
+        const title = image.getAttribute('data-title');
+        const description = image.getAttribute('data-description');
+
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+<a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+    <span class="mr-2"><i class="fas fa-image"></i></span>
+    ${title}
+</a>
+`;
+
+        subFolders.appendChild(listItem);
     });
 });
 
@@ -44,72 +59,8 @@ function clearImageForm() {
     document.getElementById('image').value = '';
 }
 
-// Função para adicionar imagem à galeria
-function addImage() {
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const imageInput = document.getElementById('image');
-
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('image', imageInput.files[0]);
-
-    // Aqui você deve adicionar a lógica para realmente adicionar a imagem à galeria
-    const gallery = document.getElementById('gallery');
-    const imageURL = URL.createObjectURL(imageInput.files[0]);
-
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('relative', 'cursor-pointer');
-
-    const image = document.createElement('img');
-    image.onload = function () {
-        // Calculando o tamanho da imagem (largura x altura)
-        const imageSize = image.naturalWidth + 'x' + image.naturalHeight;
-
-        // Definindo o atributo de dados data-size com o tamanho da imagem
-        image.setAttribute('data-size', imageSize);
-
-        // Calculando o peso do arquivo da imagem em kilobytes (KB)
-        const fileSizeKB = (imageInput.files[0].size / 1024).toFixed(2); // Peso da imagem em KB
-
-        // Definindo o atributo de dados data-weight com o peso do arquivo em KB
-        image.setAttribute('data-weight', fileSizeKB + ' KB');
-    };
-    image.src = imageURL;
-    image.classList.add('gallery-image');
-    image.setAttribute('data-title', title);
-    image.setAttribute('data-description', description);
-
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('absolute', 'top-2', 'right-2', 'bg-red-500', 'text-white', 'px-2', 'py-1', 'rounded-full');
-    deleteButton.textContent = 'Excluir';
-    deleteButton.addEventListener('click', function () {
-        confirmDelete(deleteButton);
-    });
-
-    imageContainer.appendChild(image);
-    imageContainer.appendChild(deleteButton);
-    gallery.appendChild(imageContainer);
-
-    // Limpar os campos do formulário após adicionar a imagem
-    clearImageForm();
-
-    // Simular envio de formulário
-    console.log('Título:', title);
-    console.log('Descrição:', description);
-    console.log('Imagem:', imageInput.files[0]);
-}
-
-// Função para mostrar detalhes da imagem
-function showImageDetails(event) {
-    const image = event.target;
-    const title = image.getAttribute('data-title');
-    const description = image.getAttribute('data-description');
-    const weight = image.getAttribute('data-weight');
-    const size = image.getAttribute('data-size');
-    const source = image.src;
-
+// Função para abrir o pop-up de detalhes da imagem
+function showImageDetails(title, description, weight, size) {
     const popupTitle = document.getElementById('popup-title');
     const popupDescription = document.getElementById('popup-description');
     const popupWeight = document.getElementById('popup-weight');
@@ -118,12 +69,31 @@ function showImageDetails(event) {
 
     popupTitle.textContent = title;
     popupDescription.textContent = description;
-    popupWeight.textContent = weight; // Exibir diretamente o peso do arquivo
+    popupWeight.textContent = weight; // Exibir o peso da imagem
     popupSize.textContent = size;
-    popupImage.src = source;
 
     const popup = document.getElementById('image-details-popup');
+    popupImage.src = event.target.src;
     popup.classList.remove('hidden');
+}
+
+document.getElementById('gallery').addEventListener('click', function (event) {
+    if (event.target.classList.contains('gallery-image')) {
+        const title = event.target.getAttribute('data-title');
+        const description = event.target.getAttribute('data-description');
+        const weight = event.target.getAttribute('data-weight');
+        const size = event.target.getAttribute('data-size');
+
+        showImageDetails(title, description, weight, size);
+    }
+});
+
+
+// Função para limpar os campos do formulário de adicionar imagem
+function clearImageForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('image').value = '';
 }
 
 
@@ -233,8 +203,11 @@ function showImageDetails(title, description, weight, size) {
 
     const popup = document.getElementById('image-details-popup');
     popupImage.src = event.target.src;
+
+    // Aqui vamos adicionar uma linha para exibir o peso da imagem
     popup.classList.remove('hidden');
 }
+
 document.getElementById('gallery').addEventListener('click', function (event) {
     if (event.target.classList.contains('gallery-image')) {
         const title = event.target.getAttribute('data-title');
@@ -468,6 +441,33 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function closePopup() {
+    var popup = document.getElementById('image-details-popup');
+    popup.classList.add('shrink'); // Adiciona a classe de animação
+    setTimeout(function () {
+        popup.classList.remove('shrink'); // Remove a classe após a animação
+        popup.classList.add('hidden'); // Oculta o pop-up
+    }, 500); // Tempo da animação em milissegundos (0.5s)
+}
+
+function confirmDelete(button) {
+    if (confirm("Tem certeza de que deseja excluir esta imagem?")) {
+        var imageContainer = button.parentElement;
+        imageContainer.classList.add('fade-out'); // Adiciona a classe de animação
+        setTimeout(function () {
+            imageContainer.remove(); // Remove o elemento após a animação
+        }, 500); // Tempo da animação em milissegundos (0.5s)
+    }
+}
+
+// Adicione um novo seletor para dispositivos móveis
+document.querySelectorAll('.popup-trigger-mobile').forEach(item => {
+    item.addEventListener('click', event => {
+        // Exiba o pop-up de detalhes da imagem
+        openImagePopup(item);
+    });
+});
+
 function openMenu() {
     // Adicionar a classe 'open' ao menu lateral
     const menu = document.querySelector('.menu-lateral');
@@ -476,16 +476,6 @@ function openMenu() {
     // Remover a classe 'hidden' do submenu "Fotos"
     const subfolders = document.getElementById('subfolders');
     subfolders.classList.remove('hidden');
-}
-
-function closeMenu() {
-    // Remover a classe 'open' do menu lateral
-    const menu = document.querySelector('.menu-lateral');
-    menu.classList.remove('open');
-
-    // Adicionar a classe 'hidden' ao submenu "Fotos"
-    const subfolders = document.getElementById('subfolders');
-    subfolders.classList.add('hidden');
 }
 
 function searchMenu() {
@@ -508,11 +498,14 @@ function searchMenu() {
         subfolderItems.forEach(item => {
             const title = item.textContent.trim().toLowerCase();
             if (title.startsWith(searchTerm)) {
-                item.classList.add('text-blue-500');
-            } else {
-                item.classList.remove('text-blue-500');
+                if (title.startsWith(searchTerm)) {
+                    item.classList.add('text-blue-500');
+                } else {
+                    item.classList.remove('text-blue-500');
+                }
             }
         });
+
     } else {
         // Se o campo de pesquisa estiver vazio, remover destaque dos itens do submenu "Fotos"
         const subfolderItems = document.querySelectorAll('#subfolders a');
@@ -520,6 +513,16 @@ function searchMenu() {
             item.classList.remove('text-blue-500');
         });
     }
+}
+
+function closeMenu() {
+    // Remover a classe 'open' do menu lateral
+    const menu = document.querySelector('.menu-lateral');
+    menu.classList.remove('open');
+
+    // Adicionar a classe 'hidden' ao submenu "Fotos"
+    const subfolders = document.getElementById('subfolders');
+    subfolders.classList.add('hidden');
 }
 
 function openAddImageForm() {
@@ -534,7 +537,3 @@ function openAddImageForm() {
 function simulateMenuClick() {
     document.querySelector('.hamburger').click();
 }
-
-
-
-
