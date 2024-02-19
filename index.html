@@ -27,14 +27,18 @@
                 class="w-full border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-400"
                 placeholder="Pesquisar por título" style="color: black;">
         </div>
+
         <!-- Campo de pesquisa Mobile -->
-        <div class="w-1/3 mx-auto busca-menu-mobile">
+        <div class="w-1/3 busca-menu-mobile">
             <span id="lupa-mobile" onclick="openInputsearch();" class="material-symbols-outlined">
                 search
             </span>
-            <input type="text" id="search-input" oninput="searchMenu()"
-                class="w-full border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
-                placeholder="Pesquisar por título" style="color: black;">
+
+            <div class="div-input-mobile" id="div-input-mobile">
+                <input type="text" id="search-input-mobile" oninput="searchMenu()"
+                    class="w-full border-gray-300 rounded-md focus:outline-none focus:border-blue-400 campo-pesquisa"
+                    placeholder="Pesquisar" style="color: black;">
+            </div>
         </div>
 
         <div class="menu-superior-mobile">
@@ -151,15 +155,13 @@
                 <div class="button-container">
                     <button type="button" id="save-image"
                         class="popup-button bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
-                        onclick="saveImage()">Salvar</button>
+                        onclick="savePhoto()">Salvar</button>
                     <!-- Botão de fechar o formulário de adicionar imagem -->
                     <button type="button" id="close-form"
                         class="popup-button bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
                         onclick="closeAddImageForm()">Fechar</button>
                 </div>
             </form>
-
-
 
             <!-- Galeria de imagens -->
             <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -224,6 +226,11 @@
                     <button class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full"
                         onclick="confirmDelete(this)">Excluir</button>
                 </div>
+            </div>
+
+            <div id="success-message"
+                class="fixed inset-x-0 top-1/2 transform -translate-y-1/2 bg-green-500 text-white py-4 px-8 rounded-md z-50 hidden">
+                Foto salva na galeria com sucesso!
             </div>
 
             <div id="image-details-popup"

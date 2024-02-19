@@ -184,12 +184,6 @@
     }
 }
 
-.open-input {
-    display: block;
-    animation: slideInLeft 0.5s ease forwards;
-    width: 150px !important;
-}
-
 @keyframes slideInLeft {
     from {
         transform: translateX(-100%);
@@ -200,35 +194,39 @@
     }
 }
 
+.div-input-mobile {
+    position: absolute;
+    margin: -30px -45px;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
 
 .busca-menu-mobile {
     display: none;
 
     @media (max-width: 768px) {
-        width: 46.333333%;
-        color: red;
         font-weight: 700;
         display: block;
+        height: 35px;
+        margin-right: 10px;
     }
 
     & span {
         position: relative;
-        left: 148px;
-        top: 10px;
+        left: 110px;
+        top: 13px;
+        color: white;
         cursor: pointer;
-    }
-
-    & input {
-        width: 0;
-        float: right;
     }
 }
 
-
-
-.open-input {
+.campo-pesquisa {
     width: 150px;
-    animation: all 0.5s;
+    padding: 10px;
+    float: right;
+    animation: slideInLeft 0.5s ease forwards;
 }
 
 .menu-lateral {
@@ -385,4 +383,70 @@
     @media (max-width: 768px) {
         display: none;
     }
+}
+
+/* Estilos para o pop-up de sucesso */
+#success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+    display: none;
+    /* Inicialmente oculto */
+    animation-duration: 0.5s;
+    /* Duração da animação */
+    animation-fill-mode: both;
+    /* A animação deve manter o estado final */
+}
+
+/* Animação de entrada */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        /* Começa fora da tela à esquerda */
+        opacity: 0;
+        /* Começa invisível */
+    }
+
+    100% {
+        transform: translateX(-50%);
+        /* Termina no centro da tela */
+        opacity: 1;
+        /* Termina completamente visível */
+    }
+}
+
+/* Animação de saída */
+@keyframes slideOutToRight {
+    0% {
+        transform: translateX(-50%);
+        /* Começa no centro da tela */
+        opacity: 1;
+        /* Começa completamente visível */
+    }
+
+    100% {
+        transform: translateX(100%);
+        /* Termina fora da tela à direita */
+        opacity: 0;
+        /* Termina invisível */
+    }
+}
+
+/* Estilos para o pop-up de sucesso quando estiver visível */
+#success-message.show {
+    display: block;
+    animation-name: slideInFromLeft;
+    /* Aplica a animação de entrada */
+}
+
+/* Estilos para o pop-up de sucesso quando estiver escondido */
+#success-message.hide {
+    animation-name: slideOutToRight;
+    /* Aplica a animação de saída */
 }

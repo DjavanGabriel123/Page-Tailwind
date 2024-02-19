@@ -276,12 +276,21 @@ function confirmDelete(button) {
 function searchMenu() {
     // Obtém o valor digitado no campo de pesquisa
     var searchText = document.getElementById("search-input").value.toLowerCase();
+    var searchTextmobile = document.getElementById("search-input-mobile").value.toLowerCase();
+    alert("iae");
 
     // Obtém todos os itens da lista no menu lateral
     var menuItems = document.querySelectorAll('.menu-lateral a');
 
     // Se o campo de pesquisa estiver vazio, remover destaque de todos os itens
     if (searchText === '') {
+        menuItems.forEach(function (item) {
+            item.classList.remove('highlight');
+        });
+        return; // Sai da função, evitando a iteração desnecessária
+    }
+
+    if (searchTextmobile === '') {
         menuItems.forEach(function (item) {
             item.classList.remove('highlight');
         });
@@ -299,6 +308,9 @@ function searchMenu() {
             item.classList.add('highlight');
 
             // Abre o submenu 'Fotos'
+            document.getElementById('subfolders').classList.remove('hidden');
+        } if (title.includes(searchTextmobile)) {
+            item.classList.add('highlight');
             document.getElementById('subfolders').classList.remove('hidden');
         } else {
             // Caso contrário, remove a classe 'highlight'
@@ -381,6 +393,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Função para fechar o pop-up ao clicar fora dele
+function closePopupOnClickOutside(event) {
+    const popup = document.getElementById('image-details-popup');
+    if (event.target === popup) {
+        closePopup();
+    }
+}
+
+
 
 function closePopup() {
     var popup = document.getElementById('image-details-popup');
@@ -401,13 +422,26 @@ function confirmDelete(button) {
     }
 }
 
-// Adicione um novo seletor para dispositivos móveis
-document.querySelectorAll('.popup-trigger-mobile').forEach(item => {
-    item.addEventListener('click', event => {
-        // Exiba o pop-up de detalhes da imagem
-        openImagePopup(item);
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    // Seu código JavaScript aqui
+    const openFormButton = document.getElementById('open-form');
+    if (openFormButton) {
+        openFormButton.addEventListener('click', function () {
+            // Seu código para abrir o formulário aqui
+        });
+    }
 });
+
+
+// Adicione um novo seletor para dispositivos móveis
+function openImagePopup() {
+    document.querySelectorAll('.popup-trigger-mobile').forEach(item => {
+        item.addEventListener('click', event => {
+            // Exiba o pop-up de detalhes da imagem
+            openImagePopup(item);
+        });
+    })
+};
 
 function openMenu() {
     // Adicionar a classe 'open' ao menu lateral
@@ -422,6 +456,7 @@ function openMenu() {
 function searchMenu() {
     // Obter o valor do campo de pesquisa
     const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
+    const searchTermMobile = document.getElementById('search-input-mobile').value.trim().toLowerCase();
 
     // Verificar se o campo de pesquisa está preenchido
     if (searchTerm !== '') {
@@ -440,6 +475,30 @@ function searchMenu() {
             const title = item.textContent.trim().toLowerCase();
             if (title.startsWith(searchTerm)) {
                 if (title.startsWith(searchTerm)) {
+                    item.classList.add('text-blue-500');
+                } else {
+                    item.classList.remove('text-blue-500');
+                }
+            }
+        });
+    } if (searchTermMobile !== '') {
+        // Verificar se o menu lateral já está aberto
+        const menu = document.querySelector('.menu-lateral');
+        const searchInput = document.getElementById('div-input-mobile');
+        if (!menu.classList.contains('open')) {
+            // Simular um clique no botão do menu apenas se o menu não estiver aberto
+            document.querySelector('.hamburger').click();
+            searchInput.style.width = "150px";
+            // Abrir o menu lateral e o submenu "Fotos"
+            openMenu();
+        }
+
+        // Destacar os itens correspondentes apenas no submenu "Fotos"
+        const subfolderItems = document.querySelectorAll('#subfolders a');
+        subfolderItems.forEach(item => {
+            const title = item.textContent.trim().toLowerCase();
+            if (title.startsWith(searchTermMobile)) {
+                if (title.startsWith(searchTermMobile)) {
                     item.classList.add('text-blue-500');
                 } else {
                     item.classList.remove('text-blue-500');
@@ -480,6 +539,43 @@ function simulateMenuClick() {
 }
 
 function openInputsearch() {
-    const searchInput = document.getElementById('search-input');
-    searchInput.classList.add('open-input');
+    const searchInput = document.getElementById('div-input-mobile');
+    searchInput.style.width = "150px";
 }
+
+document.addEventListener('click', (event) => {
+    const busca = document.getElementById('div-input-mobile');
+    const lupa = document.getElementById('lupa-mobile');
+    if (event.target !== lupa && event.target !== busca && !busca.contains(event.target)) {
+        busca.style.width = '0';
+    }
+});
+
+function savePhoto() {
+    // Lógica para salvar a foto aqui
+    // ...
+
+    // Após salvar com sucesso, exibe o pop-up de sucesso
+    document.getElementById('success-message').classList.add('show');
+
+    // Define um temporizador para ocultar o pop-up após alguns segundos (por exemplo, 3 segundos)
+    setTimeout(function () {
+        document.getElementById('success-message').classList.remove('show');
+    }, 3000); // Tempo em milissegundos (3 segundos neste exemplo)
+}
+
+// Função para mostrar o pop-up de sucesso
+function showSuccessMessage() {
+    var successMessage = document.getElementById("success-message");
+    successMessage.classList.add("show"); // Adiciona a classe show para mostrar o pop-up
+
+    // Define um tempo para remover a classe show e adicionar a classe hide após um pequeno atraso
+    setTimeout(function () {
+        successMessage.classList.remove("show");
+        // Adiciona a classe hide após atraso para iniciar a animação de saída
+        setTimeout(function () {
+            successMessage.classList.add("hide");
+        }, 100); // Ajuste o tempo conforme necessário para garantir que a animação de entrada seja totalmente concluída
+    }, 3000); // Tempo em milissegundos (3 segundos)
+}
+
