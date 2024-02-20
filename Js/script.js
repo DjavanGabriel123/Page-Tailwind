@@ -474,14 +474,13 @@ function searchMenu() {
         subfolderItems.forEach(item => {
             const title = item.textContent.trim().toLowerCase();
             if (title.startsWith(searchTerm)) {
-                if (title.startsWith(searchTerm)) {
-                    item.classList.add('text-blue-500');
-                } else {
-                    item.classList.remove('text-blue-500');
-                }
+                item.classList.add('text-blue-500');
+            } else {
+                item.classList.remove('text-blue-500');
             }
         });
-    } if (searchTermMobile !== '') {
+
+    } else if (searchTermMobile !== '') {
         // Verificar se o menu lateral já está aberto
         const menu = document.querySelector('.menu-lateral');
         const searchInput = document.getElementById('div-input-mobile');
@@ -498,14 +497,11 @@ function searchMenu() {
         subfolderItems.forEach(item => {
             const title = item.textContent.trim().toLowerCase();
             if (title.startsWith(searchTermMobile)) {
-                if (title.startsWith(searchTermMobile)) {
-                    item.classList.add('text-blue-500');
-                } else {
-                    item.classList.remove('text-blue-500');
-                }
+                item.classList.add('text-blue-500');
+            } else {
+                item.classList.remove('text-blue-500');
             }
         });
-
     } else {
         // Se o campo de pesquisa estiver vazio, remover destaque dos itens do submenu "Fotos"
         const subfolderItems = document.querySelectorAll('#subfolders a');
@@ -514,6 +510,7 @@ function searchMenu() {
         });
     }
 }
+
 
 function closeMenu() {
     // Remover a classe 'open' do menu lateral
