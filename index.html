@@ -59,6 +59,9 @@
                     perm_media
                 </span>
                 <span class="text-xl font-semibold ml-1">Media </span>
+
+                <button onclick="openImageSelectionPopup()"
+                    class="py-2 px-4 text-gray-300 hover:bg-gray-700 focus:outline-none">Selecionar Imagem</button>
             </div>
 
             <div class="flex-1 overflow-y-auto">
@@ -227,6 +230,52 @@
                         onclick="confirmDelete(this)">Excluir</button>
                 </div>
             </div>
+
+            <!-- Pop-up de seleção de imagem -->
+            <div id="image-selection-popup"
+                class="fixed top-0 left-0 z-50 w-full h-full bg-gray-900 bg-opacity-75 flex items-center justify-center hidden">
+                <div class="popup-content flex flex-col items-center p-8 bg-white rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">Selecionar Imagem</h2>
+                    <!-- Galeria de imagens -->
+                    <div id="gallery" class="grid grid-cols-3 gap-4 max-h-96 overflow-y-auto">
+                        <!-- Imagens da galeria serão carregadas dinamicamente aqui -->
+                    </div>
+                    <div class="mt-4">
+                        <!-- Botão para fechar o pop-up -->
+                        <button onclick="closeImageSelectionPopup()"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none">Ok</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pop-up de edição de imagem -->
+            <div id="image-edit-popup"
+                class="fixed top-0 left-0 z-50 w-full h-full bg-gray-900 bg-opacity-75 flex items-center justify-center hidden">
+                <div class="popup-content flex flex-col items-center p-8 bg-white rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">Editar Imagem</h2>
+                    <!-- Imagem selecionada -->
+                    <img id="selected-image" class="max-h-96 mb-4" src="" alt="Imagem Selecionada">
+                    <!-- Ferramentas de edição -->
+                    <div class="flex justify-center mb-4">
+                        <button onclick="zoomIn()"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none mr-2">Zoom
+                            In</button>
+                        <button onclick="zoomOut()"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none mr-2">Zoom
+                            Out</button>
+                        <button onclick="rotateLeft()"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none mr-2">Rotacionar
+                            Esquerda</button>
+                        <button onclick="rotateRight()"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none">Rotacionar
+                            Direita</button>
+                    </div>
+                    <!-- Botão para fechar o pop-up -->
+                    <button onclick="closeImageEditPopup()"
+                        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none">Fechar</button>
+                </div>
+            </div>
+
 
             <div id="success-message"
                 class="fixed inset-x-0 top-1/2 transform -translate-y-1/2 bg-green-500 text-white py-4 px-8 rounded-md z-50 hidden">

@@ -53,7 +53,6 @@
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     color: #333;
     display: flex;
 
@@ -449,4 +448,40 @@
 #success-message.hide {
     animation-name: slideOutToRight;
     /* Aplica a animação de saída */
+}
+
+#canvas-container {
+    width: 600px;
+    height: 400px;
+    margin: 50px auto;
+    position: relative;
+}
+
+#imageCanvas {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: default;
+}
+
+#tools {
+    position: absolute;
+    top: 10px;
+    left: 620px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-btn {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tool-btn:hover {
+    background-color: #45a049;
 }

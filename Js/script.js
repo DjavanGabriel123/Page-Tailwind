@@ -576,3 +576,19 @@ function showSuccessMessage() {
     }, 3000); // Tempo em milissegundos (3 segundos)
 }
 
+
+// Função para abrir o pop-up de edição de imagem
+function openImageEditPopup(imageSrc) {
+    // Exibir a imagem selecionada no pop-up
+    document.getElementById('selected-image').src = imageSrc;
+    // Mostrar o pop-up
+    document.getElementById('image-edit-popup').classList.remove('hidden');
+}
+
+// Função para fechar o pop-up de edição de imagem
+function closeImageEditPopup() {
+    // Limpar a imagem exibida
+    document.getElementById('selected-image').src = '';
+    // Ocultar o pop-up
+    document.getElementById('image-edit-popup').classList.add('hidden');
+}
